@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+#include <X11/XF86keysym.h>
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -65,9 +66,15 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *roficmd[] = { "rofi", "-show", "run" };
 static const char *termcmd[]  = { "alacritty", NULL };
+static const char *volupcmd[]  = { "volume", "up", NULL };
+static const char *voldowncmd[]  = { "volume", "down", NULL };
+static const char *volmutecmd[]  = { "volume", "mute", NULL };
 
 static Key keys[] = {
-	/* modifier                     key        function        argument */
+    /* modifier                     key        function        argument */
+    { 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd   } },
+    { 0,                       XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd } },
+    { 0,                       XF86XK_AudioMute, spawn, {.v = volmutecmd } },
     { MODKEY|ControlMask,           XK_l,      spawn,          SHCMD("xautolock -locknow") },
 	{ MODKEY,                       XK_p,      spawn,          {.v = roficmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
