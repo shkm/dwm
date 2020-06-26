@@ -14,15 +14,23 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 0;
 static const char *fonts[]          = { "Fantasque Sans Mono Nerd Font:size=11" };
 static const char dmenufont[]       = "Iosevka:size=12;";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+// static const char col_gray1[]       = "#222222";
+// static const char col_gray2[]       = "#444444";
+// static const char col_gray3[]       = "#bbbbbb";
+// static const char col_gray4[]       = "#eeeeee";
+// static const char col_cyan[]        = "#005577";
+
+static const char col_bg[] = "#282a36";
+static const char col_fg[] = "#f8f8f2";
+static const char col_border[] = "#44475a";
+static const char col_bg_sel[] = "#6272a4";
+static const char col_fg_sel[] = "#f8f8f2";
+static const char col_border_sel[] = "#bd93f9";
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeNorm] = { col_fg, col_bg, col_border },
+	[SchemeSel]  = { col_fg_sel, col_bg_sel,  col_border_sel  },
 };
 
 /* tagging */
@@ -63,7 +71,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, NULL };
 static const char *roficmd[] = { "rofi", "-show", "run" };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *volupcmd[]  = { "volume", "up", NULL };
